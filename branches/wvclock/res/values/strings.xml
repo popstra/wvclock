@@ -1,0 +1,8 @@
+<resources>
+  <string name="app_name">wvclock</string>
+  <string name="Debug">Debug</string>
+  <string name="Help">Help</string>
+  <string name="Quit">Quit</string>
+  <string name="title_activity_main">wvclock</string>
+  <string name="Show">Show</string>
+</resources>
