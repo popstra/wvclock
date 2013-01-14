@@ -9,3 +9,5 @@ This project is intended to be an introduction to Android for non-JAVA developer
 It's an alternative to using PhoneGap.  It's intended as a template for an Android application.  
 
 I've included links to all of the packages and sites I've used to create this app.  Also, I've compiled and published the app on android play.
+
+<g:plusone size="medium"></g:plusone>
