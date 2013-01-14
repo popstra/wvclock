@@ -1,0 +1,26 @@
+#summary jQuery mobile
+#labels Featured,Phase-Design,Phase-Deploy
+
+= jQuery mobile =
+
+A unified, HTML5-based user interface system for all popular mobile device platforms, built on the rock-solid jQuery and jQuery UI foundation. Its lightweight code is built with progressive enhancement, and has a flexible, easily themeable design. 
+
+= Library name, location and usage =
+
+jQuery library is installed under the folder _assets/www/libs/mobile/1.1.0/_.  Generally speaking, I install the minimized versions, _jquery.mobile.min.js_ and _jquery.mobile.min.css_.  I rename the actual file to the generic name _jquery.mobile.min.js_ and place it in a directory identified by the version number.  It's my preference.  Feel free to change this.
+
+In _index.html_, I have the line:
+
+  _<link rel="stylesheet" href="libs/mobile/1.1.0/jquery.mobile.min.css" />_
+
+  _<script src="libs/mobile/1.1.0/jquery.mobile.min.js"></script>_
+
+
+I've found it tidier to keep the libraries in directories identified by version number.  It makes it easy to switch between versions if I find that the library has a problem.  Finally, these libraries are small enough to distribute multiple versions of libraries with distributions.  When I feel comfortable with a particular version, I remove the older ones.
+
+Click the logo below to go to the [http://www.jquerymobile.com/ jQuery mobile] site:
+
+[http://www.jquerymobile.com/ http://jquerymobile.com/demos/1.2.0/docs/_assets/images/jquery-logo.png]
+
+
+<g:plusone size="medium"></g:plusone>
