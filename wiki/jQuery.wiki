@@ -15,3 +15,10 @@ In _index.html_, I have the line:
 
 
 I've found it tidier to keep the libraries in directories identified by version number.  It makes it easy to switch between versions if I find that the library has a problem.  Finally, these libraries are small enough to distribute multiple versions of libraries with distributions.  When I feel comfortable with a particular version, I remove the older ones.
+
+Click the logo below to go to the [http://www.jquery.com/ jQuery] site:
+
+[http://www.jquery.com/ http://static.jquery.com/files/rocker/images/logo_jquery_215x53.gif]
+
+
+<g:plusone size="medium"></g:plusone>
