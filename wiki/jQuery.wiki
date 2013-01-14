@@ -18,7 +18,7 @@ I've found it tidier to keep the libraries in directories identified by version 
 
 Click the logo below to go to the [http://www.jquery.com/ jQuery] site:
 
-[http://www.jquery.com/ http://static.jquery.com/files/rocker/images/logo_jquery_215x53.gif]
+[http://www.jquery.com/ http://jquery.org/wp-content/uploads/2010/01/JQuery_logo_color_onwhite-300x74.png]
 
 
 <g:plusone size="medium"></g:plusone>
