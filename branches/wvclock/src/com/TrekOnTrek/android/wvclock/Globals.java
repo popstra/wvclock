@@ -12,7 +12,8 @@ public class Globals {
 	public static String UUID         = "";
 	public static String AppVersion   = "";
 	public static String URL          = "http://code.google.com/p/wvclock";
-	public static String PageParams   = "";
+  public static String BlogURL      = "http://wvclock.blogspot.com";
+  public static String PageParams   = "";
   public static String mein         = "";
   public static String phone        = "";
 	public static final String PREFS_FILE = "wvclock";

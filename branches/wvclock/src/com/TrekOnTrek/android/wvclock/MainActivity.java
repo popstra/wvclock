@@ -1,6 +1,6 @@
 package com.TrekOnTrek.android.wvclock;
 
-import com.example.android.wvclock.R;
+import com.TrekOnTrek.android.wvclock.R;
 
 /* Define Android libraries */
 import android.net.Uri;
@@ -77,21 +77,23 @@ public class MainActivity extends Activity {
  * 
  * @see android.app.Activity#onPrepareOptionsMenu(android.view.Menu)
  */
+
+/*  Future enhancement */
+//  @Override
+//  public boolean onPrepareOptionsMenu(Menu menu) {
+//
+//    MenuItem item = menu.findItem(R.id.Debug);
+//
+//    if (Globals.debug == "Y") {
+//      item.setVisible(true);      /* turn it on  */
+//    } else {
+//      item.setVisible(false);     /* turn it off */
+//    }
+//
+//    return true;
+//  }
+ 
   
-  @Override
-  public boolean onPrepareOptionsMenu(Menu menu) {
-
-    MenuItem item = menu.findItem(R.id.Debug);
-
-    if (Globals.debug == "Y") {
-      item.setVisible(true);      /* turn it on  */
-    } else {
-      item.setVisible(false);     /* turn it off */
-    }
-
-    return true;
-  }
-
   /*
    * What to do when a menu option is clicked.
    *  
@@ -100,13 +102,17 @@ public class MainActivity extends Activity {
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
-      case R.id.Show:
-        Log.i("wvclock", "menu Show");
-        Show();
-        return true;
-
+      case R.id.ShowBlog:                   /* This id must match the id in the menu */
+        Log.i("wvclock", "Open a browser pointing to project's blog");
+        
+        /* Open a browser and point to page specified in Globals.URL */
+        Intent browserIntentBlog = new Intent("android.intent.action.VIEW",
+            Uri.parse( Globals.BlogURL) );
+        startActivity(browserIntentBlog );
+        return true;        
+        
       case R.id.Help:
-        Log.i("wvclock", "Open a new browser");
+        Log.i("wvclock", "Open a new browser pointing to project");
         
         /* Open a browser and point to page specified in Globals.URL */
         Intent browserIntentHelp = new Intent("android.intent.action.VIEW",
