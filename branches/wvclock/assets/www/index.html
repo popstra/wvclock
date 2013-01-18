@@ -38,10 +38,10 @@
   type="text/javascript"
   charset="utf-8"
 >
-	var day = 1; /* daytime color if 1, else night     */
-	var epoc = 0; /* number of seconds from 01/01/1970  */
-	var intervalID = 0; /* ID of window refresh function      */
-	var debug = ""; /* debug setting from app             */
+	var day = 1;         /* daytime color if 1, else night     */
+	var epoc = 0;        /* number of seconds from 01/01/1970  */
+	var intervalID = 0;  /* ID of window refresh function      */
+	var debug = "";      /* debug setting from app             */
 	var appversion = ""; /* application version                */
 
 	/* Do this when document is ready */
@@ -84,14 +84,14 @@
 		});
 		/*
 		 function onPageShow(e,data) {
-		 var url = $.url(document.location);
-		 debug      = url.param("debug");
-		 appversion = url.param("appversion");
-		 if ( day == 1 ) {
-		 $( '#appversion_day' ).text(appversion);
-		 } else {
-		 $( '#appversion_night' ).text(appversion);            	
-		 }
+		   var url = $.url(document.location);
+		   debug      = url.param("debug");
+		   appversion = url.param("appversion");
+		   if ( day == 1 ) {
+		     $( '#appversion_day' ).text(appversion);
+		   } else {
+		     $( '#appversion_night' ).text(appversion);            	
+		   }
 		 }
 		 */
 
