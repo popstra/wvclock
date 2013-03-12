@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1"
+/>
+
+<title></title>
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="libs/css/fonts.css"
+/>
+<!-- custom font definition -->
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="libs/css/style.css"
+/>
+<!-- font sizes based on screen size -->
+<link
+  rel="stylesheet"
+  href="libs/mobile/1.1.0/jquery.mobile.min.css"
+/>
+<link
+  rel="stylesheet"
+  href="libs/css/my.css"
+/>
+<!-- other custom css -->
+
+<script src="libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="libs/mobile/1.1.0/jquery.mobile.min.js"></script>
+
+<script
+  type="text/javascript"
+  charset="utf-8" >
+	var day = 1;         /* daytime color if 1, else night     */
+	var epoc = 0;        /* number of seconds from 01/01/1970  */
+	var intervalID = 0;  /* ID of window refresh function      */
+	var debug = "";      /* debug setting from app             */
+	var appversion = ""; /* application version                */
+
+	/* Do this when document is ready */
+	$(document).ready(function() {
+		/* Match height of both spans */
+		$("#display_clock_ss_day").height($("#dislay_clock_day").height());
+		$("#display_clock_ss_night").height($("#dislay_clock_night").height());
+
+		/* Setup what to do when a swipe happens */
+		$("#page_day").live("swipeleft", function(event) {
+			console.log("wvClock - swiperight page_day");
+			day = 0;
+			$.mobile.changePage("#page_night", {
+				transition : "flip"
+			});
+		});
+
+		$("#page_day").live("swiperight", function(event) {
+			console.log("wvClock - swiperight page_day");
+			day = 0;
+			$.mobile.changePage("#page_night", {
+				transition : "flip"
+			});
+		});
+
+		$("#page_night").live("swipeleft", function(event) {
+			console.log("wvClock - swiperight page_day");
+			day = 1;
+			$.mobile.changePage("#page_day", {
+				transition : "flip"
+			});
+		});
+
+		$("#page_night").live("swiperight", function(event) {
+			console.log("wvClock - swiperight page_day");
+			day = 1;
+			$.mobile.changePage("#page_day", {
+				transition : "flip"
+			});
+		});
+		/*
+		 function onPageShow(e,data) {
+		   var url = $.url(document.location);
+		   debug      = url.param("debug");
+		   appversion = url.param("appversion");
+		   if ( day == 1 ) {
+		     $( '#appversion_day' ).text(appversion);
+		   } else {
+		     $( '#appversion_night' ).text(appversion);            	
+		   }
+		 }
+		 */
+
+		/* start updating the clock */
+		intervalID = intervalTrigger();
+	});
+
+	/* Call this function from Java to change page */
+	function gotoPage(newpage) {
+		var anchor = '#' + newpage;
+
+		if (day == 1) {
+			anchor += '_day';
+		} else {
+			anchor += '_night';
+		}
+
+		$.mobile.changePage(anchor, "flip", true, false);
+	}
+
+	/* Updaet the clock every second */
+	function intervalTrigger() {
+		return window.setInterval(function() {
+			TimeDisplay()
+		}, 1000);
+	}
+
+	/* Display the time */
+	function TimeDisplay() {
+		var today;
+		if (epoc == 0) {
+			today = new Date(); /* get today */
+		} else {
+			today = new Date(epoc); /* get epoc from a server NOT IMPLEMENTED */
+		}
+
+		/* parse date */
+		var HH = today.getHours();
+		var MM = today.getMinutes();
+		var SS = today.getSeconds();
+		var AMPM = 'AM';
+
+		/* AM / PM */
+		if (HH > 11) {
+			AMPM = 'PM';
+		}
+
+		/* Don't use military time */
+		if (HH > 12) {
+			HH = HH - 12;
+		}
+
+		if (HH == 0) {
+			HH = 12;
+		}
+
+		/* put date into proper page (day/night) */
+		if (day == 1) {
+			$("#display_clock_day").text(HH + ":" + checkTime(MM));
+			$("#display_clock_ss_day").html(checkTime(SS) + "<br>" + AMPM);
+		} else {
+			$("#display_clock_night").text(HH + ":" + checkTime(MM));
+			$("#display_clock_ss_night").html(checkTime(SS) + "<br>" + AMPM);
+		}
+
+		/* Increment epoc by 1 second */
+		if (epoc > 0) {
+			epoc += 1000;
+		}
+
+		//////WVD();  // Add 1 to number of seconds running
+
+	}
+
+	/* make into 2 digits */
+	function checkTime(i) {
+		if (i < 10) {
+			i = '0' + i;
+		}
+		return i;
+	}
+
+	function ShowAppVersion(av) {
+		var anchor = "#display_appversion";
+
+		if (day == 1) {
+			anchor += "_day";
+		} else {
+			anchor += "_night";
+		}
+
+		$(ancho).text(av);
+
+	}
+</script>
+
+</head>
+<body>
+
+  <!-- wvClock -->
+  <div
+    data-url="page_day"
+    data-role="page"
+    id="page_day"
+    data-theme="a"
+  >
+    <div
+      data-role="content"
+      class="day_background"
+    >
+      <span
+        class="day"
+        id="display_clock_day"
+      > </span> <span
+        class="day day_small"
+        id="display_clock_ss_day"
+      > </span> <span
+        class="day day_tiny"
+        id="display_cnt_day"
+      > </span><br> <span
+        class="day_tiny"
+        id="display_appversion_day"
+      > </span>
+    </div>
+    <!--  content -->
+  </div>
+  <!--  night -->
+
+  <div
+    data-url="page_setup_day"
+    data-role="page"
+    id="page_setup_day"
+    data-theme="a"
+  >
+    <div
+      data-role="content"
+      class="day_background day_small_page"
+    >
+      <form>
+        <div data-role="fieldcontain">
+          Debug <input
+            type="checkbox"
+            name="debug"
+            id="debug_day"
+            data-inline="true"
+            value="1"
+          > &nbsp;&nbsp; <select
+            name="day_day"
+            id="day_day"
+            data-role="slider"
+            data-mini="false"
+            data-inline="false"
+          >
+            <option value="day">Day</option>
+            <option value="night">Night</option>
+          </select>
+        </div>
+        <div
+          id="save_button"
+          style="display: block;"
+        >
+          <a
+            data-role="button"
+            data-inline="false"
+            data-transition="fade"
+            data-theme="a"
+            href="#"
+            onclick="javascript:save_settings('day');"
+          > Save </a>
+        </div>
+        <br> <br>
+      </form>
+    </div>
+    <!--  content -->
+  </div>
+  <!--  page -->
+
+  <div
+    data-url="page_night"
+    data-role="page"
+    id="page_night"
+    data-theme="a"
+  >
+    <div
+      data-role="content"
+      class="night_background"
+    >
+      <span
+        class="night"
+        id="display_clock_night"
+      > </span> <span
+        class="night night_small"
+        id="display_clock_ss_night"
+      > </span><br> <span
+        class="night night_tiny"
+        id="display_cnt_night"
+      > </span><br> <span
+        class="night_tiny"
+        id="display_appversion_night"
+      > </span>
+    </div>
+    <!--  content -->
+  </div>
+  <!--  page -->
+
+  <div
+    data-url="page_setup_night"
+    data-role="page"
+    id="page_setup_night"
+    data-theme="a"
+  >
+    <div
+      data-role="content"
+      class="night_background"
+    >
+      <form>
+        <span class="night_small"> Debug:&nbsp;&nbsp;<input
+          type="checkbox"
+          name="debug"
+          id="debug_night"
+          value="1"
+        ><br> <input
+          type="radio"
+          name="day_night"
+          id="day_night"
+          value="day"
+        > &nbsp;&nbsp; Day<br> <input
+          type="radio"
+          name="night_night"
+          id="night_night"
+          value="night"
+          CHECKED
+        > &nbsp;&nbsp; Night<br>
+        </span> <input
+          type="button"
+          value="Save"
+          onclick="javascript:save_data('night');"
+        > </span>
+      </form>
+    </div>
+    <!--  content -->
+  </div>
+  <!--  page -->
+
+</body>
+</html>
