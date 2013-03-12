@@ -4,5 +4,5 @@
   <string name="Help">Help</string>
   <string name="Quit">Quit</string>
   <string name="title_activity_main">wvclock</string>
-  <string name="Show">Show</string>
+  <string name="ShowBlog">Blog</string>
 </resources>

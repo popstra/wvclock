@@ -1,12 +1,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
   <item
-    android:id="@+id/Debug"
-    android:orderInCategory="100"
-    android:title="@string/Debug"/>
-  <item
-    android:id="@+id/Show"
+    android:id="@+id/ShowBlog"
     android:orderInCategory="150"
-    android:title="@string/Show"/>
+    android:title="@string/ShowBlog"/>
   <item
     android:id="@+id/Help"
     android:orderInCategory="200"
